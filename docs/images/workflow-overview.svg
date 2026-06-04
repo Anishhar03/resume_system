@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <style>
+      .title { font: 700 30px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .text { font: 500 14px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .boxA { fill: #e0f2fe; stroke: #0369a1; stroke-width: 2; rx: 16; }
+      .boxB { fill: #dcfce7; stroke: #15803d; stroke-width: 2; rx: 16; }
+      .boxC { fill: #fef3c7; stroke: #b45309; stroke-width: 2; rx: 16; }
+      .boxD { fill: #ede9fe; stroke: #6d28d9; stroke-width: 2; rx: 16; }
+      .arrow { stroke: #1e293b; stroke-width: 2.5; marker-end: url(#m); fill: none; }
+    </style>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1e293b"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="55" class="title">Intelligent Resume Assistant - End-to-End Workflow</text>
+
+  <rect class="boxA" x="50" y="110" width="250" height="130"/>
+  <text x="75" y="145" class="label">1. User Upload</text>
+  <text x="75" y="175" class="text">PDF/TXT or pasted text</text>
+  <text x="75" y="200" class="text">Session initialized</text>
+
+  <rect class="boxB" x="360" y="110" width="300" height="130"/>
+  <text x="385" y="145" class="label">2. Parsing Tool Layer</text>
+  <text x="385" y="175" class="text">PyPDF2 extraction (if PDF)</text>
+  <text x="385" y="200" class="text">Regex + heuristics for fields</text>
+
+  <rect class="boxC" x="720" y="110" width="420" height="130"/>
+  <text x="745" y="145" class="label">3. Structured Memory</text>
+  <text x="745" y="175" class="text">resume_text, extracted_data</text>
+  <text x="745" y="200" class="text">conversation_history, intent history</text>
+
+  <rect class="boxD" x="130" y="340" width="420" height="150"/>
+  <text x="155" y="375" class="label">4. Agent Decision Layer</text>
+  <text x="155" y="405" class="text">Infer intent from user message</text>
+  <text x="155" y="430" class="text">Select tools (skill matcher) when needed</text>
+  <text x="155" y="455" class="text">Enforce guardrails + missing data policy</text>
+
+  <rect class="boxA" x="620" y="340" width="250" height="150"/>
+  <text x="645" y="375" class="label">5. LLM Call</text>
+  <text x="645" y="405" class="text">Gemini JSON mode</text>
+  <text x="645" y="430" class="text">Role: strict hiring assistant</text>
+  <text x="645" y="455" class="text">Fallback if API fails</text>
+
+  <rect class="boxB" x="910" y="340" width="240" height="150"/>
+  <text x="935" y="375" class="label">6. Response</text>
+  <text x="935" y="405" class="text">answer</text>
+  <text x="935" y="430" class="text">confidence</text>
+  <text x="935" y="455" class="text">source + missing_data</text>
+
+  <line class="arrow" x1="300" y1="175" x2="360" y2="175"/>
+  <line class="arrow" x1="660" y1="175" x2="720" y2="175"/>
+  <line class="arrow" x1="860" y1="240" x2="360" y2="340"/>
+  <line class="arrow" x1="550" y1="415" x2="620" y2="415"/>
+  <line class="arrow" x1="870" y1="415" x2="910" y2="415"/>
+
+  <text x="40" y="640" class="text">All outputs follow the required schema and explicitly report "Not mentioned in resume" when data is unavailable.</text>
+</svg>

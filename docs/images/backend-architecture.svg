@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <style>
+      .title { font: 700 30px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .h { font: 700 19px 'Segoe UI', Arial, sans-serif; fill: #111827; }
+      .t { font: 500 14px 'Segoe UI', Arial, sans-serif; fill: #374151; }
+      .mod { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 14; }
+      .api { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2; rx: 14; }
+      .tool { fill: #dcfce7; stroke: #15803d; stroke-width: 2; rx: 14; }
+      .arrow { stroke: #0f172a; stroke-width: 2.5; marker-end: url(#arr); fill: none; }
+    </style>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+
+  <text x="30" y="50" class="title">Backend Internal Architecture</text>
+
+  <rect class="api" x="40" y="100" width="260" height="180"/>
+  <text x="60" y="135" class="h">Flask API (app.py)</text>
+  <text x="60" y="165" class="t">/api/session</text>
+  <text x="60" y="190" class="t">/api/upload-resume</text>
+  <text x="60" y="215" class="t">/api/chat</text>
+  <text x="60" y="240" class="t">/health and static serving</text>
+
+  <rect class="mod" x="360" y="100" width="250" height="180"/>
+  <text x="380" y="135" class="h">Memory Store</text>
+  <text x="380" y="165" class="t">SessionMemory dataclass</text>
+  <text x="380" y="190" class="t">resume_text</text>
+  <text x="380" y="215" class="t">extracted_data</text>
+  <text x="380" y="240" class="t">conversation_history</text>
+
+  <rect class="mod" x="670" y="100" width="250" height="180"/>
+  <text x="690" y="135" class="h">Agent Layer</text>
+  <text x="690" y="165" class="t">Intent inference</text>
+  <text x="690" y="190" class="t">Guardrail enforcement</text>
+  <text x="690" y="215" class="t">Tool routing</text>
+  <text x="690" y="240" class="t">Fallback control</text>
+
+  <rect class="tool" x="980" y="100" width="190" height="180"/>
+  <text x="1000" y="135" class="h">Tools</text>
+  <text x="1000" y="165" class="t">PDF extractor</text>
+  <text x="1000" y="190" class="t">Resume parser</text>
+  <text x="1000" y="215" class="t">Skill matcher</text>
+
+  <rect class="api" x="450" y="380" width="320" height="220"/>
+  <text x="470" y="415" class="h">Gemini Client (llm.py)</text>
+  <text x="470" y="445" class="t">REST call to Gemini API</text>
+  <text x="470" y="470" class="t">JSON response mode</text>
+  <text x="470" y="495" class="t">Low temperature generation</text>
+  <text x="470" y="520" class="t">Graceful failure handling</text>
+  <text x="470" y="545" class="t">Returns parsed JSON dict or None</text>
+
+  <rect class="tool" x="860" y="420" width="300" height="150"/>
+  <text x="880" y="455" class="h">Response Schema</text>
+  <text x="880" y="485" class="t">answer, confidence, source, missing_data</text>
+  <text x="880" y="510" class="t">Confidence clamped to [0,1]</text>
+  <text x="880" y="535" class="t">Source limited: resume|inference</text>
+
+  <line class="arrow" x1="300" y1="190" x2="360" y2="190"/>
+  <line class="arrow" x1="610" y1="190" x2="670" y2="190"/>
+  <line class="arrow" x1="920" y1="190" x2="980" y2="190"/>
+  <line class="arrow" x1="760" y1="280" x2="610" y2="380"/>
+  <line class="arrow" x1="920" y1="190" x2="760" y2="380"/>
+  <line class="arrow" x1="770" y1="490" x2="860" y2="490"/>
+
+  <text x="40" y="700" class="t">Design goal: deterministic behavior under failure + explicit missing-data signaling to prevent hallucination.</text>
+</svg>

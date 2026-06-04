@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intelligent Resume Assistant</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel upload-panel">
+        <h1>Intelligent Resume Assistant</h1>
+        <p class="sub">Upload resume and ask hiring-focused questions.</p>
+        <div class="row">
+          <input id="resumeFile" type="file" accept=".pdf,.txt" />
+        </div>
+        <div class="row">
+          <textarea id="resumeText" placeholder="Or paste resume text here"></textarea>
+        </div>
+        <button id="uploadBtn">Process Resume</button>
+        <pre id="resumeData" class="json-box"></pre>
+      </section>
+
+      <section class="panel chat-panel">
+        <h2>Chat</h2>
+        <div id="chatBox" class="chat-box"></div>
+        <div class="chat-input-row">
+          <input id="chatInput" type="text" placeholder="Ask about summary, fit, skills, education..." />
+          <button id="sendBtn">Send</button>
+        </div>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+  </html>

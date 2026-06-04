@@ -4,10 +4,16 @@ from pathlib import Path
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request, send_from_directory
 
-from agent import ResumeAgent
-from llm import GeminiClient
-from memory import MemoryStore
-from tools import extract_text_from_pdf, parse_resume_text
+try:
+    from backend.agent import ResumeAgent
+    from backend.llm import GeminiClient
+    from backend.memory import MemoryStore
+    from backend.tools import extract_text_from_pdf, parse_resume_text
+except ImportError:
+    from agent import ResumeAgent
+    from llm import GeminiClient
+    from memory import MemoryStore
+    from tools import extract_text_from_pdf, parse_resume_text
 
 
 load_dotenv()

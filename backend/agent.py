@@ -1,13 +1,23 @@
 from typing import Dict, List
 
-from llm import GeminiClient
-from models import AgentResponse
-from tools import (
-    extract_required_skills_from_query,
-    infer_intent,
-    match_required_skills,
-    missing_data_fields,
-)
+try:
+    from backend.llm import GeminiClient
+    from backend.models import AgentResponse
+    from backend.tools import (
+        extract_required_skills_from_query,
+        infer_intent,
+        match_required_skills,
+        missing_data_fields,
+    )
+except ImportError:
+    from llm import GeminiClient
+    from models import AgentResponse
+    from tools import (
+        extract_required_skills_from_query,
+        infer_intent,
+        match_required_skills,
+        missing_data_fields,
+    )
 
 
 SYSTEM_ROLE = (
@@ -147,4 +157,3 @@ Rules:
             f"experience, and education insights. Your question was: {user_message}"
         )
         return AgentResponse(answer=answer, confidence=0.65, source="inference", missing_data=missing)
-
